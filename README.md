@@ -1,5 +1,5 @@
 
-# Where’s My Pizza Place?
+#Weather Feather?
 
 --
 
@@ -11,12 +11,11 @@ Design Document
 
 
 ## Introduction
-Are you one of those people who love to eat pizza and don’t know where to find all the amazing places that have pizza on their menu. 
-WheresMyPizzaPlace can help you find all the awesome restaurants that offer pizza.
+Have plans to go outside today and not sure about weather? Let us help you with accurate weather forecasting.
 
 
 ## Requirements
-As a user, I want to be able to search pizza places by Country, Province, City and Categories.
+As a user, I want to be able to check weather for a City, or a group of Cities or a Postal code.
 
 ## Datasources
 
