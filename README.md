@@ -4,8 +4,7 @@
 ---
 
 
-![Cocktail](https://user-images.githubusercontent.com/77544294/111056995-f30f0f80-8451-11eb-94d8-b588072d42ee.png)
-
+![xml_1](https://user-images.githubusercontent.com/77543344/111858065-5f838600-890c-11eb-9bf1-e7615c090d28.jpeg)
 
 Design Document
 
