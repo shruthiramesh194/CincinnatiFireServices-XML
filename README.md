@@ -36,11 +36,10 @@ Our application enables you to perform **search** on the basis of below attribut
 - Address.    
 - Event Number
 - Neighborhood. 
-- Community Council Neighborhood.  
-- Map API   
-- Lattitude X.  
-- Longitude X
-
+- Community Council Neighborhood.   
+We will use following attributes to relate with Google Maps API and will use Google Map to display exact location of the incident occurred.   
+Lattitude X.   
+Longitude X
 
 ### Datasources
 [Drinks Json](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
