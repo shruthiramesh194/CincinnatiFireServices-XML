@@ -1,5 +1,5 @@
 
-## SpyforSparks
+## Cincinnati Fire Services
 
 ---
 
@@ -14,7 +14,7 @@ Cincinnati Fire Department is on its toes to rescue you! It provides you wih an 
 Scroll through our application to know more on how well Cincinnati Fire Department is providing a helping hand!!!
 
 
-### Requirements
+### Description
 By our application, we can showcase steps in response process based on the incident occurred as below.   
 
 First Step: Create Time Incident – Time when response data was submitted into the CAD system.   
@@ -44,7 +44,7 @@ We will use following attributes to relate with Google Maps API and will use Goo
 - Longitude X
 
 ### Datasources
-[Drinks Json](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
+[Cincinnati Fire Incidents](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
 [Google Places](https://developers.google.com/maps/documentation/places/web-service/overview)
 
 ### Team Members and Roles
