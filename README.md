@@ -32,15 +32,16 @@ Fire and Medical:
 
 Our application enables you to perform **search** on the basis of below attributes:   
 
--Address.  
 
--Event Number.  
 
-- Neighborhood
-Community Council Neighborhood
-Map API
-Lattitude X
-Longitude X
+- Address.    
+- Event Number
+- Neighborhood. 
+- Community Council Neighborhood.  
+- Map API   
+- Lattitude X.  
+- Longitude X
+
 
 ### Datasources
 [Drinks Json](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
