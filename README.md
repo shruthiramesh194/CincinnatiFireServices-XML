@@ -29,10 +29,10 @@ Fire and Medical:
 2.    How long did it take to resolve the issue
 
 
-*Search*
 
-Address
-Event Number
+Our application enables you to perform search on the basis of below attributes:
+-Address
+-Event Number
 Neighborhood
 Community Council Neighborhood
 Map API
