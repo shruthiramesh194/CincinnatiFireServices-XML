@@ -30,10 +30,13 @@ Fire and Medical:
 
 
 
-Our application enables you to perform search on the basis of below attributes:
--Address
--Event Number
-Neighborhood
+Our application enables you to perform **search** on the basis of below attributes:   
+
+-Address.  
+
+-Event Number.  
+
+- Neighborhood
 Community Council Neighborhood
 Map API
 Lattitude X
