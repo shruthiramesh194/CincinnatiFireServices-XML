@@ -15,11 +15,10 @@ Scroll through our application to know more on how well Cincinnati Fire Departme
 
 
 ### Requirements
-By our application, we can showcase steps in response process based on the incident occurred as below.
- 
-First Step: Create Time Incident – Time when response data was submitted into the CAD system.
-Second Step: Dispatch Time Primary Unit – Time when first apparatus was dispatched to respond to an incident.
-Third Step: Arrival Time Primary Unit - Time first CFD apparatus arrived on scene at the incident.
+By our application, we can showcase steps in response process based on the incident occurred as below.   
+First Step: Create Time Incident – Time when response data was submitted into the CAD system.   
+Second Step: Dispatch Time Primary Unit – Time when first apparatus was dispatched to respond to an incident.   
+Third Step: Arrival Time Primary Unit - Time first CFD apparatus arrived on scene at the incident.   
 Forth Step: Closed_Time_Incident – Time when incident is marked complete in the CAD system
  
 Based on the above information, we can calculate following and department can make improvements to the services provided.
