@@ -1,8 +1,8 @@
 ﻿{
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/Welcome",
+  "$ref": "#/definitions/Incident",
   "definitions": {
-    "Welcome": {
+    "Incident": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -81,7 +81,7 @@
         "longitude_x",
         "neighborhood"
       ],
-      "title": "Incidents"
+      "title": "Incident"
     }
   }
 }
