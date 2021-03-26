@@ -1,5 +1,5 @@
 
-## Cincinnati Fire Services
+## Cincinnati Fire Services - Incident Analysis
 
 ---
 
@@ -15,15 +15,14 @@ Scroll through our application to know more on how well Cincinnati Fire Departme
 
 
 ### Description
-By our application, we can showcase steps in response process based on the incident occurred as below.   
+We are using the below mentioned information from the dataset to derive meaningful insights: 
 
-**First Step:** Create Time Incident – Time when response data was submitted into the CAD system.   
-**Second Step:** Dispatch Time Primary Unit – Time when first apparatus was dispatched to respond to an incident.   
-**Third Step:** Arrival Time Primary Unit - Time first CFD apparatus arrived on scene at the incident.   
-**Forth Step:** Closed_Time_Incident – Time when incident is marked complete in the CAD system
+**1)** Create Time Incident 
+**2)** Dispatch Time Primary Unit 
+**3)** Arrival Time Primary Unit 
+**4)** Closed_Time_Incident 
  
-Based on the above information, we can calculate following and department can make improvements to the services provided.
-Fire and Medical:
+Based on the above information, we can calculate the following and the department can make adjustments to available resources for the services provided - Fire and Medical:
 
 1.    How long did it take to send help
 2.    How long did it take to resolve the issue
