@@ -22,8 +22,7 @@ By our application, we can showcase steps in response process based on the incid
 **Third Step:** Arrival Time Primary Unit - Time first CFD apparatus arrived on scene at the incident.   
 **Forth Step:** Closed_Time_Incident – Time when incident is marked complete in the CAD system
  
-Based on the above information, we can calculate following and department can make improvements to the services provided.
-Fire and Medical:
+Based on the above information, we can calculate the following and the department can make adjustments to available resources for the services provided - Fire and Medical:
 
 1.    How long did it take to send help
 2.    How long did it take to resolve the issue
