@@ -34,7 +34,7 @@ namespace CincinnatiFireServices.Pages
                 {
                 
                     var incident = Incident.FromJson(jsonString);
-                    ViewData["Incidents"] = incident;
+                    ViewData["allIncidents"] = incident;
                 }
                 else
                 {
@@ -42,7 +42,7 @@ namespace CincinnatiFireServices.Pages
                     {
                         Console.WriteLine(evt);
                     }
-                    ViewData["Incidents"] = new List<Incident>();
+                    ViewData["allIncidents"] = new List<Incident>();
                 }
                 
              }
