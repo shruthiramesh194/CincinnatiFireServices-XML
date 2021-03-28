@@ -13,10 +13,15 @@
           "type": "string"
         },
         "latitude_x": {
-          "type": "string"
+          "type": "string",
+          "minimum": -100,
+          "maximum": 100
+
         },
         "longitude_x": {
-          "type": "string"
+          "type": "string",
+          "minimum": -150,
+          "maximum": 150
         },
         "agency": {
           "type": "string"
@@ -30,9 +35,9 @@
         },
         "event_number": {
           "type": "string",
-          "minLength": 16,
-          "maxLength": 16,
-          "pattern": "^[a-z]{4}[0-9]{12}$"
+          "minLength": 15,
+          "maxLength": 15
+
         },
         "incident_type_id": {
           "type": "string"
