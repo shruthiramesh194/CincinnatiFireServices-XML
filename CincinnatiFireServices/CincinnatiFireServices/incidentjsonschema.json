@@ -9,7 +9,25 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-
+        "address_x": {
+          "type": "string"
+        },
+        "latitude_x": {
+          "type": "string"
+        },
+        "longitude_x": {
+          "type": "string"
+        },
+        "agency": {
+          "type": "string"
+        },
+        "create_time_incident": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "disposition_text": {
+          "type": "string"
+        },
         "event_number": {
           "type": "string",
           "minLength": 16,
