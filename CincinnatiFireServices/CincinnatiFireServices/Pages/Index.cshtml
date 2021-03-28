@@ -43,9 +43,14 @@
             <th>Neighborhood</th>
 
         </tr>
-        @{ foreach (QuickType.Incident incident in allIncidents)
+             
+        @{
+            var incCount = 0;
+            foreach (QuickType.Incident incident in allIncidents)
             {
-                <tr>
+                if(incCount < 20)
+                {   
+                    <tr>
                     <td>@incident.AddressX</td>
                     <td>@incident.CfdIncidentType</td>
                     <td>@incident.CfdIncidentTypeGroup</td>
@@ -55,6 +60,12 @@
                     <td>@incident.ClosedTimeIncident</td>
                     <td>@incident.Neighborhood</td>
                 </tr>
+                    incCount = incCount + 1;
+                }
+                else
+                {
+                    break;
+                }
             } }
     </table>
 
