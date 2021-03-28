@@ -1,0 +1,53 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/HydrantElement"
+    },
+    "definitions": {
+        "HydrantElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "objectid": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "assetid": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "lifecyclestatus": {
+                    "type": "string"
+                },
+                "servicearea": {
+                    "type": "string"
+                },
+                "staticpressure": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "latitude": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "neighborhood": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetid",
+                "latitude",
+                "lifecyclestatus",
+                "longitude",
+                "neighborhood",
+                "objectid",
+                "servicearea",
+                "staticpressure"
+            ],
+            "title": "HydrantElement"
+        }
+    }
+}
