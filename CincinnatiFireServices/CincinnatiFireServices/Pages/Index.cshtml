@@ -2,9 +2,69 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    List<QuickType.Incident> allIncidents = (List<QuickType.Incident>)ViewData["allIncidents"];
 }
 
+<style>
+#Fire{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#Fire td, #Fire th {
+  border: 8px solid #ddd;
+  padding: 8px;
+}
+
+#Fire tr:nth-child(even){background-color: #f2f2f2;}
+
+#Fire tr:hover {background-color: #ddd;}
+
+#Fire th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0094ff;
+  color: white;
+}
+</style>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table id="Fire">
+        <tr>
+            <th>Address</th>
+            <th>Incident Type</th>
+            <th>Incident Type Group</th>
+            <th>Create Time Incident</th>
+            <th>Dispatch Time Primary Unit</th>
+            <th>Arrival Time Primary Unit</th>
+            <th>Closed Time Incident</th>
+            <th>Neighborhood</th>
+
+        </tr>
+        @{ foreach (QuickType.Incident incident in allIncidents)
+            {
+                <tr>
+                    <td>@incident.AddressX</td>
+                    <td>@incident.CfdIncidentType</td>
+                    <td>@incident.CfdIncidentTypeGroup</td>
+                    <td>@incident.CreateTimeIncident</td>
+                    <td>@incident.DispatchTimePrimaryUnit</td>
+                    <td>@incident.ArrivalTimePrimaryUnit</td>
+                    <td>@incident.ClosedTimeIncident</td>
+                    <td>@incident.Neighborhood</td>
+                </tr>
+            } }
+    </table>
+
 </div>
+
+
+
+
+
+
+
+
+
