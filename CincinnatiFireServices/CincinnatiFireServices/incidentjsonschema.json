@@ -1,32 +1,20 @@
 ﻿{
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/Incident",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/IncidentElement"
+  },
   "definitions": {
-    "Incident": {
+    "IncidentElement": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "address_x": {
-          "type": "string"
-        },
-        "latitude_x": {
-          "type": "string"
-        },
-        "longitude_x": {
-          "type": "string"
-        },
-        "agency": {
-          "type": "string"
-        },
-        "create_time_incident": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "disposition_text": {
-          "type": "string"
-        },
+
         "event_number": {
-          "type": "string"
+          "type": "string",
+          "minLength": 16,
+          "maxLength": 16,
+          "pattern": "^[a-z]{4}[0-9]{12}$"
         },
         "incident_type_id": {
           "type": "string"
@@ -63,25 +51,10 @@
         }
       },
       "required": [
-        "address_x",
-        "agency",
-        "arrival_time_primary_unit",
-        "beat",
-        "cfd_incident_type",
-        "cfd_incident_type_group",
-        "closed_time_incident",
-        "community_council_neighborhood",
         "create_time_incident",
-        "dispatch_time_primary_unit",
-        "disposition_text",
-        "event_number",
-        "incident_type_desc",
-        "incident_type_id",
-        "latitude_x",
-        "longitude_x",
-        "neighborhood"
+        "event_number"
       ],
-      "title": "Incident"
+      "title": "IncidentElement"
     }
   }
 }
