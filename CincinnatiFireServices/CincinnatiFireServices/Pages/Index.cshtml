@@ -82,78 +82,43 @@
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
 
     </div>
-
-    <div class="text-center">
-
-        <table id="Fire">
-            <tr>
-                <th>Address</th>
-                <th>Incident Type</th>
-                <th>Incident Type Group</th>
-                <th>Create Time Incident</th>
-                <th>Dispatch Time Primary Unit</th>
-                <th>Arrival Time Primary Unit</th>
-                <th>Closed Time Incident</th>
-                <th>Neighborhood</th>
-
-            </tr>
-
-            @{
-                var incCount = 0;
-                foreach (QuickType.Incident incident in allIncidents)
-                {
-                    if (incCount < 20)
-                    {
-                        <tr>
-                            <td>@incident.AddressX</td>
-                            <td>@incident.CfdIncidentType</td>
-                            <td>@incident.CfdIncidentTypeGroup</td>
-                            <td>@incident.CreateTimeIncident</td>
-                            <td>@incident.DispatchTimePrimaryUnit</td>
-                            <td>@incident.ArrivalTimePrimaryUnit</td>
-                            <td>@incident.ClosedTimeIncident</td>
-                            <td>@incident.Neighborhood</td>
-                        </tr>
-                        incCount = incCount + 1;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                } }
-        </table>
-
-    </div>
-
     <div>
-        <h3 class="text-lg-center "><strong>Nearby  Hydrants</strong></h3> <div class="text-center">
-
-             
+        <h3 class="text-lg-center"><strong>Events around fire incidents</strong></h3> <div class="text-center">
+  
 
         </div><br />
+        <div class="text-center">
 
-        <div class="text-danger align-content-center ">
-
-            <table id="hydra" class="text-center">
+            <table id="Fire">
                 <tr>
-                    <th>Service Area</th>
-                    <th>Life Cycle Status</th>
-
+                    <th>Address</th>
+                    <th>Incident Type</th>
+                    <th>Incident Type Group</th>
+                    <th>Create Time Incident</th>
+                    <th>Dispatch Time Primary Unit</th>
+                    <th>Arrival Time Primary Unit</th>
+                    <th>Closed Time Incident</th>
+                    <th>Neighborhood</th>
 
                 </tr>
 
                 @{
-                    var incCounter = 0;
-                    foreach (QuickTypeHydrant.Hydrant hydrant in allHydrants)
+                    var incCount = 0;
+                    foreach (QuickType.Incident incident in allIncidents)
                     {
-                        if (incCounter < 20)
+                        if (incCount < 20)
                         {
                             <tr>
-                                <td>@hydrant.Servicearea</td>
-                                <td>@hydrant.Lifecyclestatus</td>
-
+                                <td>@incident.AddressX</td>
+                                <td>@incident.CfdIncidentType</td>
+                                <td>@incident.CfdIncidentTypeGroup</td>
+                                <td>@incident.CreateTimeIncident</td>
+                                <td>@incident.DispatchTimePrimaryUnit</td>
+                                <td>@incident.ArrivalTimePrimaryUnit</td>
+                                <td>@incident.ClosedTimeIncident</td>
+                                <td>@incident.Neighborhood</td>
                             </tr>
-                            incCounter = incCounter + 1;
+                            incCount = incCount + 1;
                         }
                         else
                         {
@@ -163,6 +128,49 @@
             </table>
 
         </div>
+
+        <div>
+            <h3 class="text-lg-center "><strong>Nearby  Hydrants</strong></h3> <div class="text-center">
+
+
+
+            </div><br />
+
+            <div class=" align-content-center ">
+
+                <table id="hydra" class="text-center">
+                    <tr>
+                        <th>Service Area</th>
+                        <th>Life Cycle Status</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+
+
+                    </tr>
+
+                    @{
+                        var incCounter = 0;
+                        foreach (QuickTypeHydrant.Hydrant hydrant in allHydrants)
+                        {
+                            if (incCounter < 20)
+                            {
+                                <tr>
+                                    <td>@hydrant.Servicearea</td>
+                                    <td>@hydrant.Lifecyclestatus</td>
+                                    <td>@hydrant.Latitude</td>
+                                    <td>@hydrant.Longitude</td>
+
+                                </tr>
+                                incCounter = incCounter + 1;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        } }
+                </table>
+
+            </div>
 
 
 
