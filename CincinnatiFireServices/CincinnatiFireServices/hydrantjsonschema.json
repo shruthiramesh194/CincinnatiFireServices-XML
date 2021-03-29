@@ -27,25 +27,25 @@
                     "type": "string",
                     "format": "integer"
                 },
-                "latitude": {
-                    "type": "string"
-                },
-                "longitude": {
-                    "type": "string"
-                },
+              "latitude": {
+                "type": "string",
+                "minimum": -100,
+                "maximum": 100
+              },
+              "longitude": {
+                "type": "string",
+                "minimum": -150,
+                "maximum": 150
+              },
                 "neighborhood": {
                     "type": "string"
                 }
             },
             "required": [
-                "assetid",
-                "latitude",
-                "lifecyclestatus",
-                "longitude",
-                "neighborhood",
-                "objectid",
-                "servicearea",
-                "staticpressure"
+                //"assetid",
+                //"lifecyclestatus",
+                "objectid"
+                
             ],
             "title": "HydrantElement"
         }
