@@ -25,33 +25,32 @@ namespace CincinnatiFireServices.Pages
                 //Creating Dictionary for future use
                 IDictionary<string, QuickType.Incident> allIncidents = new Dictionary<string, QuickType.Incident>();
                 IDictionary<long, QuickTypeHydrant.Hydrant> allHydrants = new Dictionary<long, QuickTypeHydrant.Hydrant>();
+                ViewData["allIncidents"] = new List<Incident>();
                 //downloading incident json string from source
-                string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
-                List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
-                //adding incident objects to dictionary
-                foreach (QuickType.Incident incident in incidents)
+                try
                 {
-                    allIncidents.Add(incident.EventNumber, incident);
+                    string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
+                    List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
+                    //adding incident objects to dictionary
+                    foreach (QuickType.Incident incident in incidents)
+                    {
+                        allIncidents.Add(incident.EventNumber, incident);
+                    }
+
+                    //parsing the json schema for incidents
+                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
+                    JArray jsonArray = JArray.Parse(incidentJsonString);
+                    //validating with the json schema
+                    if (jsonArray.IsValid(schema))
+                    {
+                        ViewData["allIncidents"] = incidents;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
 
-                //parsing the json schema for incidents
-                JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
-                JArray jsonArray = JArray.Parse(incidentJsonString);
-                IList<string> validationEvents = new List<string>();
-                //validating with the json schema
-                if(jsonArray.IsValid(schema))
-                {
-                
-                    ViewData["allIncidents"] = incidents;
-                }
-                else
-                {
-                    foreach(string evt in validationEvents)
-                    {
-                        Console.WriteLine(evt);
-                    }
-                    ViewData["allIncidents"] = new List<Incident>();
-                }
                 //downloading hydrant json string from source
                 string hydrantjson = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
                 List<QuickTypeHydrant.Hydrant> hydrantsList = QuickTypeHydrant.Hydrant.FromJson(hydrantjson);
