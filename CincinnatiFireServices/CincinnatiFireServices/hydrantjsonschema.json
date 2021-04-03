@@ -42,10 +42,7 @@
         }
       },
       "required": [
-        //"assetid",
-        //"lifecyclestatus",
         "objectid"
-
       ],
       "title": "HydrantElement"
     }
