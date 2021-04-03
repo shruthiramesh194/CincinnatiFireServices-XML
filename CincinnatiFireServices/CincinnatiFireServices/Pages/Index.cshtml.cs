@@ -58,7 +58,6 @@ namespace CincinnatiFireServices.Pages
                 //parsing the json schema for hydrants
                 JSchema hydrantschema = JSchema.Parse(System.IO.File.ReadAllText("hydrantjsonschema.json"));
                 JArray hydrantJsonArray = JArray.Parse(hydrantjson);
-                IList<string> hydrantValidationEvents = new List<string>();
                 //adding hydrant objects to dictionary
                 foreach (QuickTypeHydrant.Hydrant hydrant in hydrantsList)
                 {
@@ -72,10 +71,6 @@ namespace CincinnatiFireServices.Pages
                 }
                 else
                 {
-                    foreach (string evt in hydrantValidationEvents)
-                    {
-                        Console.WriteLine(evt);
-                    }
                     ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
                 }
 

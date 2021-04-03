@@ -1,53 +1,53 @@
 ﻿{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/HydrantElement"
-    },
-    "definitions": {
-        "HydrantElement": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "objectid": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "assetid": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "lifecyclestatus": {
-                    "type": "string"
-                },
-                "servicearea": {
-                    "type": "string"
-                },
-                "staticpressure": {
-                    "type": "string",
-                    "format": "integer"
-                },
-              "latitude": {
-                "type": "string",
-                "minimum": -100,
-                "maximum": 100
-              },
-              "longitude": {
-                "type": "string",
-                "minimum": -150,
-                "maximum": 150
-              },
-                "neighborhood": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                //"assetid",
-                //"lifecyclestatus",
-                "objectid"
-                
-            ],
-            "title": "HydrantElement"
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/HydrantElement"
+  },
+  "definitions": {
+    "HydrantElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "objectid": {
+          "type": "string",
+          "format": "integer"
+        },
+        "assetid": {
+          "type": "string",
+          "format": "integer"
+        },
+        "lifecyclestatus": {
+          "type": "string"
+        },
+        "servicearea": {
+          "type": "string"
+        },
+        "staticpressure": {
+          "type": "string",
+          "format": "integer"
+        },
+        "latitude": {
+          "type": "string",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "longitude": {
+          "type": "string",
+          "minimum": -150,
+          "maximum": 150
+        },
+        "neighborhood": {
+          "type": "string"
         }
+      },
+      "required": [
+        //"assetid",
+        //"lifecyclestatus",
+        "objectid"
+
+      ],
+      "title": "HydrantElement"
     }
+  }
 }
