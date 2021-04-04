@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
-using QuickType;
+using IncidentAPI;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -23,34 +23,34 @@ namespace CincinnatiFireServices.Pages
             using (var webClient = new WebClient())
             {
                 //Creating Dictionary for future use
-                IDictionary<string, QuickType.Incident> allIncidents = new Dictionary<string, QuickType.Incident>();
+                IDictionary<string, IncidentAPI.Incident> allIncidents = new Dictionary<string, IncidentAPI.Incident>();
                 IDictionary<long, QuickTypeHydrant.Hydrant> allHydrants = new Dictionary<long, QuickTypeHydrant.Hydrant>();
                 //downloading incident json string from source
                 string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
-                List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
+                List<IncidentAPI.Incident> incidents = IncidentAPI.Incident.FromJson(incidentJsonString);
                 //adding incident objects to dictionary
-                foreach (QuickType.Incident incident in incidents)
+                foreach (IncidentAPI.Incident incident in incidents)
                 {
                     allIncidents.Add(incident.EventNumber, incident);
                 }
 
                 //parsing the json schema for incidents
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
-                JArray jsonArray = JArray.Parse(incidentJsonString);
+                JArray incidentArray = JArray.Parse(incidentJsonString);
                 IList<string> validationEvents = new List<string>();
                 //validating with the json schema
-                if(jsonArray.IsValid(schema))
+                if (incidentArray.IsValid(schema))
                 {
-                
+
                     ViewData["allIncidents"] = incidents;
                 }
                 else
                 {
-                    foreach(string evt in validationEvents)
+                    foreach (string invalidEvent in validationEvents)
                     {
-                        Console.WriteLine(evt);
+                        Console.WriteLine(invalidEvent);
                     }
-                    ViewData["allIncidents"] = new List<Incident>();
+                    ViewData["allIncidents"] = new List<IncidentAPI.Incident>();
                 }
                 //downloading hydrant json string from source
                 string hydrantjson = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
@@ -72,9 +72,9 @@ namespace CincinnatiFireServices.Pages
                 }
                 else
                 {
-                    foreach (string evt in hydrantValidationEvents)
+                    foreach (string invalidEvent in hydrantValidationEvents)
                     {
-                        Console.WriteLine(evt);
+                        Console.WriteLine(invalidEvent);
                     }
                     ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
                 }
