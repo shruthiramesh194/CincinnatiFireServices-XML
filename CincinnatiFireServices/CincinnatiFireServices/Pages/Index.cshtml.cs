@@ -52,32 +52,42 @@ namespace CincinnatiFireServices.Pages
                     }
                     ViewData["allIncidents"] = new List<IncidentAPI.Incident>();
                 }
-                //downloading hydrant json string from source
-                string hydrantjson = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
-                List<QuickTypeHydrant.Hydrant> hydrantsList = QuickTypeHydrant.Hydrant.FromJson(hydrantjson);
-                //parsing the json schema for hydrants
-                JSchema hydrantschema = JSchema.Parse(System.IO.File.ReadAllText("hydrantjsonschema.json"));
-                JArray hydrantJsonArray = JArray.Parse(hydrantjson);
-                IList<string> hydrantValidationEvents = new List<string>();
-                //adding hydrant objects to dictionary
-                foreach (QuickTypeHydrant.Hydrant hydrant in hydrantsList)
-                {
-                    allHydrants.Add(hydrant.Objectid, hydrant);
-                }
-                //validating with the json schema
-                if (hydrantJsonArray.IsValid(hydrantschema))
-                {
 
-                    ViewData["allHydrants"] = hydrantsList;
-                }
-                else
+                try
                 {
-                    foreach (string invalidEvent in hydrantValidationEvents)
+                    //downloading hydrant json string from source
+                    string hydrantjson = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
+                    List<QuickTypeHydrant.Hydrant> hydrantsList = QuickTypeHydrant.Hydrant.FromJson(hydrantjson);
+                    //parsing the json schema for hydrants
+                    JSchema hydrantschema = JSchema.Parse(System.IO.File.ReadAllText("hydrantjsonschema.json"));
+                    JArray hydrantJsonArray = JArray.Parse(hydrantjson);
+                    IList<string> hydrantValidationEvents = new List<string>();
+                    //adding hydrant objects to dictionary
+                    foreach (QuickTypeHydrant.Hydrant hydrant in hydrantsList)
                     {
-                        Console.WriteLine(invalidEvent);
+                        allHydrants.Add(hydrant.Objectid, hydrant);
                     }
-                    ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
+                    //validating with the json schema
+                    if (hydrantJsonArray.IsValid(hydrantschema))
+                    {
+
+                        ViewData["allHydrants"] = hydrantsList;
+                    }
+                    else
+                    {
+                        foreach (string invalidEvent in hydrantValidationEvents)
+                        {
+                            Console.WriteLine(invalidEvent);
+                        }
+                        ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
+                    }
+
                 }
+                catch
+                {
+                    Console.WriteLine("Something went wrong!");
+                }
+                
 
             }
 
