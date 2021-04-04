@@ -6,7 +6,7 @@
 //
 //    var incident = Incident.FromJson(jsonString);
 
-namespace QuickType
+namespace IncidentAPI
 {
     using System;
     using System.Collections.Generic;
@@ -71,12 +71,12 @@ namespace QuickType
 
     public partial class Incident
     {
-        public static List<Incident> FromJson(string json) => JsonConvert.DeserializeObject<List<Incident>>(json, QuickType.Converter.Settings);
+        public static List<Incident> FromJson(string json) => JsonConvert.DeserializeObject<List<Incident>>(json, IncidentAPI.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this List<Incident> self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this List<Incident> self) => JsonConvert.SerializeObject(self, IncidentAPI.Converter.Settings);
     }
 
     internal static class Converter

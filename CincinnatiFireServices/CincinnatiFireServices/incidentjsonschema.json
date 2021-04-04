@@ -1,9 +1,5 @@
 ﻿{
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "type": "array",
-  "items": {
-    "$ref": "#/definitions/IncidentElement"
-  },
   "definitions": {
     "IncidentElement": {
       "type": "object",
@@ -79,5 +75,9 @@
       ],
       "title": "IncidentElement"
     }
-  }
+  },
+  "items": {
+    "$ref": "#/definitions/IncidentElement"
+  },
+  "type": "array"
 }
