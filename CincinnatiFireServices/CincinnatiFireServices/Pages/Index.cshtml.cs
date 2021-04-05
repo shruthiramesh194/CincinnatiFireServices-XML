@@ -18,6 +18,8 @@ namespace CincinnatiFireServices.Pages
             _logger = logger;
         }
 
+        public string error;
+
         public void OnGet()
         {
             using (var webClient = new WebClient())
@@ -26,6 +28,7 @@ namespace CincinnatiFireServices.Pages
                 IDictionary<string, QuickType.Incident> allIncidents = new Dictionary<string, QuickType.Incident>();
                 IDictionary<long, QuickTypeHydrant.Hydrant> allHydrants = new Dictionary<long, QuickTypeHydrant.Hydrant>();
                 ViewData["allIncidents"] = new List<Incident>();
+                ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
                 //downloading incident json string from source
                 try
                 {
@@ -38,48 +41,45 @@ namespace CincinnatiFireServices.Pages
                     }
 
                     //parsing the json schema for incidents
-                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
+                    JSchema incidentSchema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
                     JArray jsonArray = JArray.Parse(incidentJsonString);
                     //validating with the json schema
-                    if (jsonArray.IsValid(schema))
+                    if (jsonArray.IsValid(incidentSchema))
                     {
                         ViewData["allIncidents"] = incidents;
                     }
                 }
                 catch(Exception ex)
                 {
+                    error = "Something went wrong! Unable to retrieve incidents list";
                     Console.WriteLine(ex.Message);
                 }
 
-                //downloading hydrant json string from source
-                string hydrantjson = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
-                List<QuickTypeHydrant.Hydrant> hydrantsList = QuickTypeHydrant.Hydrant.FromJson(hydrantjson);
-                //parsing the json schema for hydrants
-                JSchema hydrantschema = JSchema.Parse(System.IO.File.ReadAllText("hydrantjsonschema.json"));
-                JArray hydrantJsonArray = JArray.Parse(hydrantjson);
-                IList<string> hydrantValidationEvents = new List<string>();
-                //adding hydrant objects to dictionary
-                foreach (QuickTypeHydrant.Hydrant hydrant in hydrantsList)
+                try
                 {
-                    allHydrants.Add(hydrant.Objectid, hydrant);
-                }
-                //validating with the json schema
-                if (hydrantJsonArray.IsValid(hydrantschema))
-                {
-
-                    ViewData["allHydrants"] = hydrantsList;
-                }
-                else
-                {
-                    foreach (string evt in hydrantValidationEvents)
+                    string hydrantJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json");
+                    List<QuickTypeHydrant.Hydrant> hydrantsList = QuickTypeHydrant.Hydrant.FromJson(hydrantJsonString);
+                    //parsing the json schema for hydrants
+                    JSchema hydrantSchema = JSchema.Parse(System.IO.File.ReadAllText("hydrantjsonschema.json"));
+                    JArray hydrantJsonArray = JArray.Parse(hydrantJsonString);
+                    //adding hydrant objects to dictionary
+                    foreach (QuickTypeHydrant.Hydrant hydrant in hydrantsList)
                     {
-                        Console.WriteLine(evt);
+                        allHydrants.Add(hydrant.Objectid, hydrant);
                     }
-                    ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
+                    
+                    //validating with the json schema
+                    if (hydrantJsonArray.IsValid(hydrantSchema))
+                    {
+                        ViewData["allHydrants"] = hydrantsList;
+                    }
+                } 
+                catch(Exception ex)
+                {
+                    error = "Something went wrong! Unable to retrieve hydrants list";
+                    Console.WriteLine(ex.Message);
                 }
-
             }
-
         }
     }
 }
