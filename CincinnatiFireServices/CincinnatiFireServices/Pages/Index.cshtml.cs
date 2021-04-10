@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using QuickType;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
 
 namespace CincinnatiFireServices.Pages
 {
@@ -17,7 +21,7 @@ namespace CincinnatiFireServices.Pages
         {
             _logger = logger;
         }
-
+        
         public void OnGet()
         {
             using (var webClient = new WebClient())
@@ -28,12 +32,18 @@ namespace CincinnatiFireServices.Pages
                 //downloading incident json string from source
                 string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
                 List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
+                List<string> neighborhoodList = new List<string>();
                 //adding incident objects to dictionary
                 foreach (QuickType.Incident incident in incidents)
                 {
                     allIncidents.Add(incident.EventNumber, incident);
+                    neighborhoodList.Add(incident.Neighborhood);
+                    
                 }
 
+                //HttpContext.Session.Set("neighborhoodList", byte[](neighborhoodList.Distinct().ToList().ToArray));
+               
+                ViewData["neighborhoodList"] = neighborhoodList.Distinct().ToList();
                 //parsing the json schema for incidents
                 JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
                 JArray jsonArray = JArray.Parse(incidentJsonString);
