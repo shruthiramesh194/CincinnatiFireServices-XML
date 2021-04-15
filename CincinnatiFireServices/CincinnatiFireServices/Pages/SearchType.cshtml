@@ -1,0 +1,67 @@
+﻿@page
+@model CincinnatiFireServices.Pages.SearchTypeModel
+@{
+
+    List<QuickType.Incident> serviceIncidentList = (List<QuickType.Incident>)ViewData["serviceIncidentList"];
+}
+
+<div class="row no-gutters">
+    <div class="col-sm-5">
+        <h1 class="display-4 font-weight-bold jumbotron">Medical Incidents that occur due to fire incidents</h1>
+    </div>
+    <div class="col-sm-7">
+        <div class="card-body">
+            <h2>Search by Medical Service</h2>
+            <form method="post">
+                <select name="medicservice" required>
+                    <option value="0">Select a Medical Service</option>
+
+                    <option value="ALS">Advanced Life Support</option>
+                    <option value="BLS">Basic Life Support</option>
+                    
+                </select>
+
+                <input type="submit" value="Incidents by Services" name="Get Services">
+            </form>
+
+
+        </div>
+    </div>
+
+<hr />
+
+
+@if (serviceIncidentList != null)
+{
+
+
+    <table id="aag">
+        <tr>
+            <th>Address</th>
+
+            <th>Incident Type Group</th>
+            <th>Create Time Incident</th>
+            <th>Dispatch Time Primary Unit</th>
+            <th>Arrival Time Primary Unit</th>
+            <th>Closed Time Incident</th>
+
+        </tr>
+
+        @foreach (QuickType.Incident incident in serviceIncidentList)
+        {
+
+            <tr>
+                <td>@incident.AddressX</td>
+
+                <td>@incident.CfdIncidentTypeGroup</td>
+                <td>@incident.CreateTimeIncident</td>
+                <td>@incident.DispatchTimePrimaryUnit</td>
+                <td>@incident.ArrivalTimePrimaryUnit</td>
+                <td>@incident.ClosedTimeIncident</td>
+
+            </tr>
+
+        }
+    </table>
+
+}
