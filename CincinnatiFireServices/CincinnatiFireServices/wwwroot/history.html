@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>History</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function () {
+            $("#Combined_Name").autocomplete({
+                source: '/AutocompleteJson',
+                minLength: 3
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <a href="/"><img src="img/img1.jpeg" alt="Home" /></a>
+    </div>
+    <div>
+        <p><strong> Welcome!!! </strong>Our motto is to <strong>Save Lives !!!</strong></p>
+        Out team of our Brave Hearts include:
+        <ul>
+            <li>Ayushi</li>
+            <li>Shreeya</li>
+            <li>Nikit</li>
+            <li>Shruti</li>
+        </ul>
+
+    </div>
+    <div>
+        <p>Wanna know more about each of our Team Members? Enter their name in below box!!! </p>
+   
+        <form action="/OurTeam" method="get">
+            <input name="Combined_Name" id="Combined_Name" type="text" placeholder="Enter Team Member's Name">
+            <input type="submit" />
+        </form>
+    </div>
+
+
+    <div>
+        <h1>Our History</h1>
+        <p>
+            The Cincinnati Fire Department (CFD) was organized in 1853 and is the nation’s oldest fully paid professional fire department. The CFD provides fire suppression, first responder emergency medical services, Advanced Life Support (ALS) transport, arson investigation, fire prevention, hazardous devices and hazardous material incidents response to the seventy-seven square miles of the City of Cincinnati.
+
+            We operate 26 fire stations strategically situated throughout the city, housing 26 Engine companies; 12 Truck (Ladder) companies; 2 Heavy Rescue units; and 12 Medic Units (Advanced Life Support Transport units).  CFD also provides response coverage to 25 miles of Ohio River shoreline.
+        </p>
+    </div>
+    <div>
+        <p> Top neighbourhoods in Cincinnati to have reported maximum calls over last 6 months:</p>
+    <ol>
+        <li>DOWNTOWN</li>
+        <li>WESTWOOD</li>
+        <li>HARTWELL</li>
+        <li>BOND HILL</li>
+    </ol>
+    </div>
+
+</body>
+</html> 
