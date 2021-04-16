@@ -20,7 +20,7 @@ namespace CincinnatiFireServices.Pages
 
             {
 
-                string appleKhaoge = webClient.DownloadString("http://localhost:33974/?query=Apple");
+                string appleKhaoge = webClient.DownloadString("https://nutrientdiary20210416013720.azurewebsites.net/?query=Apple");
                 JArray jsonArray = JArray.Parse(appleKhaoge);
                 
                var nutrients = Nutrient.FromJson(appleKhaoge);
