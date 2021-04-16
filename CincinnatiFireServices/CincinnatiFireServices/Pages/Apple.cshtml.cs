@@ -23,7 +23,7 @@ namespace CincinnatiFireServices.Pages
                 string peerApple = webClient.DownloadString("https://nutrientdiary20210416013720.azurewebsites.net/?query=Apple");
                 JArray jsonArray = JArray.Parse(peerApple);  
                var nutrients = Nutrient.FromJson(peerApple);
-                ViewData["test"] = nutrients;
+                ViewData["peerpage"] = nutrients;
 
 
 
