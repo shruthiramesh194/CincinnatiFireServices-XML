@@ -12,17 +12,23 @@ namespace CincinnatiFireServices.Pages
     {
         public JsonResult OnGet()
         {
+
+            string cfdIncType = HttpContext.Request.Query["cfdIncType"];
+
             using (var webClient = new WebClient())
             {
                 //downloading incident json string from source
-
-                string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
+                string url = "https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json?";
+                if (!string.IsNullOrEmpty(cfdIncType))
+                {
+                    url = $"{url}cfd_incident_type={cfdIncType}";
+                }
+                string incidentJsonString = webClient.DownloadString(url);
                 List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
-                Wrapperclass wrp = new Wrapperclass();
-                wrp.incidents = incidents;
                 return new JsonResult(incidents);
             }
 
         }
     }
 }
+
