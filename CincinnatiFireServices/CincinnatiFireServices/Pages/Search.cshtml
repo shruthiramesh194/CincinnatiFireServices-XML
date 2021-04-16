@@ -7,7 +7,7 @@
     List<QuickType.Incident> neighborhoodIncidentList = (List<QuickType.Incident>)ViewData["neighborhoodIncidentList"];
     List<QuickTypeHydrant.Hydrant> neighborhoodHydrantList = (List<QuickTypeHydrant.Hydrant>)ViewData["neighborhoodHydrantList"];
 }
-
+<link rel="stylesheet" href="~/css/search.css" />
 <div class="card container border-dark">
     <div class="text-center">
         <h1 class="display-4 font-weight-bold jumbotron">Events around fire incidents</h1>
@@ -66,13 +66,9 @@
                         <th>Arrival Time Primary Unit</th>
                         <th>Closed Time Incident</th>
                         <th>Neighborhood</th>
-
                     </tr>
-
-
                     @foreach (QuickType.Incident incident in neighborhoodIncidentList)
                     {
-
                         <tr>
                             <td>@incident.AddressX</td>
                             <td>@incident.CfdIncidentType</td>
@@ -83,17 +79,12 @@
                             <td>@incident.ClosedTimeIncident</td>
                             <td>@incident.Neighborhood</td>
                         </tr>
-
                     }
-
                 </table>
-
             </div>
             <div>
                 <h3 class="text-lg-center "><strong>Nearby  Hydrants</strong></h3> <div class="text-center">
-
-                </div><br />
-
+            </div><br />
                 <div class=" align-content-center ">
 
                     <table id="hydra" class="text-center">
@@ -101,31 +92,21 @@
                             <th>Service Area</th>
                             <th>Life Cycle Status</th>
                             <th>Neighborhood</th>
-
-
                         </tr>
-
                         @{
 
                             foreach (QuickTypeHydrant.Hydrant hydrant in neighborhoodHydrantList)
                             {
-
                                 <tr>
                                     <td>@hydrant.Servicearea</td>
                                     <td>@hydrant.Lifecyclestatus</td>
                                     <td>@hydrant.Neighborhood</td>
-
                                 </tr>
-
-                            } }
+                            }
+                        }
                     </table>
-
                 </div>
-
             </div>
-
-
         }
-
     </div>
 </div>
