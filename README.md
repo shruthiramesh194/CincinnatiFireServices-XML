@@ -22,25 +22,13 @@ We are using the below mentioned information from the dataset to derive meaningf
 **3)** Arrival Time Primary Unit 
 **4)** Closed_Time_Incident 
  
-Based on the above information, we can calculate the following and the department can make adjustments to available resources for the services provided - Fire and Medical:
+Our application allows user to fetch information on the incidents handled by Cincinnati fire department.User may query the information using below attributes:
 
-1.    How long did it take to send help
-2.    How long did it take to resolve the issue
+1.    Neighborhood
+2.    Medical Service
 
+The application also provides an information on the nearby hydrants for the specific neighbourhood.
 
-
-Our application enables you to perform **search** on the basis of below attributes:   
-
-
-
-- Address.    
-- Event Number
-- Neighborhood. 
-- Community Council Neighborhood.   
-
-We will use following attributes to relate with Google Maps API and will use Google Map to display exact location of the incident occurred.   
-- Lattitude X.   
-- Longitude X
 
 ### Datasources
 [Cincinnati Fire Incidents](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
