@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Know you neighbourhood</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="css/mobile.css" type="text/css" media="screen and (max-device-width: 480px)" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript">
+        $(function () {
+            $("#Combined_Name").autocomplete({
+                source: '/AutocompleteJson',
+                minLength: 3
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="topnav">
+        <a href="/"><img src="img/img1.jpeg" alt="Home" /></a>
+    </div>
+   
+    <div id="content">
+        <h1>Know about the neighbourhoods served by the Cincinnati Fire Services</h1>
+        <p>Our motto is to <strong>Save Lives !!!</strong></p>
+        <form action="/action_page.php" method="get">
+            <input name="Combined_Name" id="Combined_Name" type="text" placeholder="Enter neighbourhood">
+            <input type="submit" />
+        </form>
+
+        <div id="whoweare">
+
+           The site is maintained by 
+            <ul>
+                <li>Ayushi</li>
+                <li>Shreeya</li>
+                <li>Nikit</li>
+                <li>Shruti</li>
+            </ul>
+            Top neighbourhoods in Cincinnati are:
+            <ol>
+                <li>DOWNTOWN</li>
+                <li>WESTWOOD</li>
+                <li>HARTWELL</li>
+                <li>BOND HILL</li>
+            </ol>
+        </div>
+        <div class="junk">
+            <p>The Cincinnati Fire Department provides fire protection and emergency medical services for Cincinnati, Ohio. 
+            The department, which was established on April 1, 1853, was the first fully paid and professional fire department in the United States.[6] Along with being responsible for nearly 80 square miles (210 km2) of land, the department also provides response coverage to 25 miles (40 km) of Ohio River shoreline..</p> 
+        </div>
+    </div>
+
+</body>
+</html> 
