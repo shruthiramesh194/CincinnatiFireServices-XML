@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using QuickType;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Text;
 
 namespace CincinnatiFireServices.Pages
 {
@@ -30,23 +34,38 @@ namespace CincinnatiFireServices.Pages
                 ViewData["allIncidents"] = new List<Incident>();
                 ViewData["allHydrants"] = new List<QuickTypeHydrant.Hydrant>();
                 //downloading incident json string from source
+
                 try
                 {
                     string incidentJsonString = webClient.DownloadString("https://data.cincinnati-oh.gov/resource/vnsz-a3wp.json");
                     List<QuickType.Incident> incidents = QuickType.Incident.FromJson(incidentJsonString);
+                    List<string> neighborhoodList = new List<string>();
                     //adding incident objects to dictionary
                     foreach (QuickType.Incident incident in incidents)
                     {
                         allIncidents.Add(incident.EventNumber, incident);
+                        neighborhoodList.Add(incident.Neighborhood);
+
                     }
 
+                    //HttpContext.Session.Set("neighborhoodList", byte[](neighborhoodList.Distinct().ToList().ToArray));
+
+                    ViewData["neighborhoodList"] = neighborhoodList.Distinct().ToList();
                     //parsing the json schema for incidents
-                    JSchema incidentSchema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
+                    JSchema schema = JSchema.Parse(System.IO.File.ReadAllText("incidentjsonschema.json"));
                     JArray jsonArray = JArray.Parse(incidentJsonString);
+                    IList<string> validationEvents = new List<string>();
                     //validating with the json schema
-                    if (jsonArray.IsValid(incidentSchema))
+                    if(jsonArray.IsValid(schema))
                     {
                         ViewData["allIncidents"] = incidents;
+                    }
+                    else
+                    {
+                        foreach(string evt in validationEvents)
+                        {
+                            ViewData["allIncidents"] = incidents;
+                        }
                     }
                 }
                 catch(Exception ex)

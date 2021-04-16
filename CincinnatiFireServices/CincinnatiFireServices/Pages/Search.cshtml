@@ -1,0 +1,131 @@
+﻿@page
+@model CincinnatiFireServices.Pages.SearchModel
+@{
+    List<QuickType.Incident> allIncidents = (List<QuickType.Incident>)ViewData["allIncidents"];
+    List<QuickTypeHydrant.Hydrant> allHydrants = (List<QuickTypeHydrant.Hydrant>)ViewData["allHydrants"];
+    List<string> neighborhoodList = (List<String>)ViewData[("neighborhoodList")];
+    List<QuickType.Incident> neighborhoodIncidentList = (List<QuickType.Incident>)ViewData["neighborhoodIncidentList"];
+    List<QuickTypeHydrant.Hydrant> neighborhoodHydrantList = (List<QuickTypeHydrant.Hydrant>)ViewData["neighborhoodHydrantList"];
+}
+
+<div class="card container border-dark">
+    <div class="text-center">
+        <h1 class="display-4 font-weight-bold jumbotron">Events around fire incidents</h1>
+    </div>
+    <hr />
+    <div class="row no-gutters">
+        <div class="col-sm-7">
+            <div class="card-body">
+                <h2>Search by neighborhood</h2>
+                <form method="post">
+                    <select name="neighborhood" required>
+                        <option value="0">Select a Neighborhood</option>
+                        @foreach (string neighborhood in neighborhoodList)
+                        {
+                            <option value=@neighborhood>@neighborhood</option>
+                        }
+                    </select>
+
+                    <input type="submit" value="Incidents by Neighborhood" name="Get Details">
+                </form>
+            </div>
+        </div>
+
+
+        @if (neighborhoodIncidentList != null)
+        {
+            <div class="row">
+
+                <div class="col-lg">
+                    Map
+                </div>
+                <div class="col-lg">
+                    <div id="map" style="height:600px; width:700px;"></div>
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: { lat: 39.1, lng: -84.516667 },
+                                zoom: 10
+                            });
+
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEkoYbM_gTmpHMWjgAouuEQcGgxHe-rl4&callback=initMap" async defer></script>
+                </div>
+            </div>
+            <div class="text-center">
+
+                <table id="Fire">
+                    <tr>
+                        <th>Address</th>
+                        <th>Incident Type</th>
+                        <th>Incident Type Group</th>
+                        <th>Create Time Incident</th>
+                        <th>Dispatch Time Primary Unit</th>
+                        <th>Arrival Time Primary Unit</th>
+                        <th>Closed Time Incident</th>
+                        <th>Neighborhood</th>
+
+                    </tr>
+
+
+                    @foreach (QuickType.Incident incident in neighborhoodIncidentList)
+                    {
+
+                        <tr>
+                            <td>@incident.AddressX</td>
+                            <td>@incident.CfdIncidentType</td>
+                            <td>@incident.CfdIncidentTypeGroup</td>
+                            <td>@incident.CreateTimeIncident</td>
+                            <td>@incident.DispatchTimePrimaryUnit</td>
+                            <td>@incident.ArrivalTimePrimaryUnit</td>
+                            <td>@incident.ClosedTimeIncident</td>
+                            <td>@incident.Neighborhood</td>
+                        </tr>
+
+                    }
+
+                </table>
+
+            </div>
+            <div>
+                <h3 class="text-lg-center "><strong>Nearby  Hydrants</strong></h3> <div class="text-center">
+
+                </div><br />
+
+                <div class=" align-content-center ">
+
+                    <table id="hydra" class="text-center">
+                        <tr>
+                            <th>Service Area</th>
+                            <th>Life Cycle Status</th>
+                            <th>Neighborhood</th>
+
+
+                        </tr>
+
+                        @{
+
+                            foreach (QuickTypeHydrant.Hydrant hydrant in neighborhoodHydrantList)
+                            {
+
+                                <tr>
+                                    <td>@hydrant.Servicearea</td>
+                                    <td>@hydrant.Lifecyclestatus</td>
+                                    <td>@hydrant.Neighborhood</td>
+
+                                </tr>
+
+                            } }
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        }
+
+    </div>
+</div>

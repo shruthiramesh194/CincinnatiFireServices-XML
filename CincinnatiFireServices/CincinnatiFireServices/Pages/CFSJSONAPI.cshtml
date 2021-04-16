@@ -1,0 +1,24 @@
+﻿@page
+@model CincinnatiFireServices.Pages.CFSJSONAPIModel
+@{
+   
+}
+
+<div class="container-fluid jumbotron bg-secondary">
+    <h1 class="text-black-50 align-content-center alert-warning text-center">JSON Output</h1>
+    <div class="container-fluid bg-secondary jumbotron">
+        <p class="font-weight-bolder text-light">
+            Access the whole JSON dataset or the Emergency Medical Services JSON from our Cincinnati incidents dataset.
+        </p>
+        <p class="jumbotron font-weight-bolder text-black-50 badge-pill badge-secondary">
+            Click on the link to access the JSON for 'Advanced Life Support' incidents: <a asp-page="/JsonFeed" asp-route-cfdIncType="ALS">Advanced Life Support incidents</a>
+        </p>
+        <p class="jumbotron font-weight-bolder text-black-50 badge-pill badge-primary">
+            Click on the link to access the JSON for 'Basic Life Support' incidents: <a asp-page="/JsonFeed" asp-route-cfdIncType="BLS">Basic Life Support incidents</a>
+        </p>
+        <p class="jumbotron font-weight-bolder text-black-50 badge-pill badge-primary">
+            Click on the link to access the whole incidents JSON: <a asp-page="/JsonFeed">Full JSON</a>
+        </p>
+    </div>
+    <hr class="bg-white" />
+</div>
