@@ -1,21 +1,16 @@
 ﻿@page
 @model CincinnatiFireServices.Pages.VisualizationModel
 @{
-    //ViewData["Title"] = "Home page";
-    //List<QuickType.Incident> allIncidents = (List<QuickType.Incident>)ViewData["allIncidents"];
-    //List<QuickTypeHydrant.Hydrant> allHydrants = (List<QuickTypeHydrant.Hydrant>)ViewData["allHydrants"];
+
     Dictionary<string, int> neighborhoodCount = (Dictionary<string, int>)ViewData["neighborhoodCount"];
-    //JavaScriptSerializer ser = new JavaScriptSerializer();
-    // hfData.Value = ser.Serialize(shops);
-    
     KeyValuePair<string, int>[] lstStringCollection;
     lstStringCollection = neighborhoodCount.Select(pair => new KeyValuePair<string, int>(pair.Key, pair.Value)).ToArray();
 }
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-   
-    //var neighborhoodCountList = "<%= this.lstStringCollection %>"
+
+
     // Load the Visualization API and the corechart package.
     google.charts.load('current', { 'packages': ['corechart'] });
 

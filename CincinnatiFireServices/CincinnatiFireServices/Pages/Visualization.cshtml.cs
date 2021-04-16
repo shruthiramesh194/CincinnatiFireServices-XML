@@ -39,7 +39,7 @@ namespace CincinnatiFireServices.Pages
                     {
                         neighborhoodIncidents.Add(neighborhood, new List<Incident>());
                     }
-                    //allIncidents.Add(incident.EventNumber, incident);
+
                     neighborhoodList.Add(incident.Neighborhood);
 
                 }

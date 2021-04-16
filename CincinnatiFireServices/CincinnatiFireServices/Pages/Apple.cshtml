@@ -1,7 +1,7 @@
 ﻿@page
 @model CincinnatiFireServices.Pages.AppleModel
 @{
-   var nutrients =(NutrientQuickType.Nutrient[])ViewData["test"];
+    var nutrients = (NutrientQuickType.Nutrient[])ViewData["test"];
 }
 <div class="text-center">
 
@@ -13,34 +13,19 @@
 
             <th>Portion Size</th>
             <th>Description</th>
-          
-           <th>BrandedFoodCategory</th>
-
-
-
+            <th>BrandedFoodCategory</th>
+        </tr>
 
             @{ foreach (NutrientQuickType.Nutrient i in nutrients)
 
                 {
 
-<tr>
-
-
-
-            <td>@i.PortionSize </td>
-            <td>@i.Description </td>
-
-    <td>@i.BrandedFoodCategory</td>
-  
-
-           
-
-
-
-
-
-        </tr>
- } }
+                <tr>
+                    <td>@i.PortionSize </td>
+                    <td>@i.Description </td>
+                    <td>@i.BrandedFoodCategory</td>
+                </tr>
+            } }
 
 
 

@@ -18,7 +18,7 @@
 
                     <option value="ALS">Advanced Life Support</option>
                     <option value="BLS">Basic Life Support</option>
-                    
+
                 </select>
 
                 <input type="submit" value="Incidents by Services" name="Get Services">
@@ -28,41 +28,32 @@
         </div>
     </div>
 
-<hr />
+    <hr />
 
 
-@if (serviceIncidentList != null)
-{
+    @if (serviceIncidentList != null)
+    {
 
 
-    <table id="Fire">
-        <tr>
-            <th>Address</th>
-
-            <th>Incident Type Group</th>
-            <th>Create Time Incident</th>
-            <th>Dispatch Time Primary Unit</th>
-            <th>Arrival Time Primary Unit</th>
-            <th>Closed Time Incident</th>
-
-        </tr>
-
-        @foreach (QuickType.Incident incident in serviceIncidentList)
-        {
-
+        <table id="Fire">
             <tr>
-                <td>@incident.AddressX</td>
-
-                <td>@incident.CfdIncidentTypeGroup</td>
-                <td>@incident.CreateTimeIncident</td>
-                <td>@incident.DispatchTimePrimaryUnit</td>
-                <td>@incident.ArrivalTimePrimaryUnit</td>
-                <td>@incident.ClosedTimeIncident</td>
+                <th>Address</th>
+                <th>Incident Type Group</th>
 
             </tr>
 
-        }
-    </table>
+            @foreach (QuickType.Incident incident in serviceIncidentList)
+            {
 
-}
+                <tr>
+                    <td>@incident.AddressX</td>
+                    <td>@incident.CfdIncidentTypeGroup</td>
+
+
+                </tr>
+
+            }
+        </table>
+
+    }
 </div>
