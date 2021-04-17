@@ -5,33 +5,36 @@
     List<QuickType.Incident> serviceIncidentList = (List<QuickType.Incident>)ViewData["serviceIncidentList"];
 }
 <link rel="stylesheet" href="~/css/search.css" />
-<div class="row no-gutters">
-    <div class="col-sm-5">
-        <h1 class="display-4 font-weight-bold jumbotron">Medical Incidents that occur due to fire incidents</h1>
-    </div>
-    <div class="col-sm-7">
-        <div class="card-body">
-            <h2>Search by Medical Service</h2>
-            <form method="post">
-                <select name="medicservice" required>
-                    <option value="0">Select a Medical Service</option>
-
-                    <option value="ALS">Advanced Life Support</option>
-                    <option value="BLS">Basic Life Support</option>
-
-                </select>
-
-                <input type="submit" value="Incidents by Services" name="Get Services">
-            </form>
-
-
-        </div>
-    </div>
+<div class="card container border-dark bg-secondary">
 
     <hr />
+    <div class="row no-gutters">
+        <div class="col-sm-7">
+            <div class="card-body">
+                <h2>Search by Medical Service</h2>
+                <form method="post">
+                    <select name="medicservice" required>
+                        <option value="0">Select a Medical Service</option>
+
+                        <option value="ALS">Advanced Life Support</option>
+                        <option value="BLS">Basic Life Support</option>
+
+                    </select>
+
+                    <input type="submit" value="Incidents by Services" name="Get Services">
+                </form>
 
 
-    @if (serviceIncidentList != null)
+            </div>
+            <div style: 100%>
+                <center><img src="https://patch.com/img/cdn20/users/1396761/20170721/041844/styles/T800x600/public/processed_images/19894939_10154806274748226_1527943123106632720_n-1500667886-2766.jpg"></center>
+            </div>
+        </div>
+
+        <hr />
+
+
+        @if (serviceIncidentList != null)
     {
 
 
@@ -45,15 +48,16 @@
             @foreach (QuickType.Incident incident in serviceIncidentList)
             {
 
-                <tr>
-                    <td>@incident.AddressX</td>
-                    <td>@incident.CfdIncidentTypeGroup</td>
+            <tr>
+                <td>@incident.AddressX</td>
+                <td>@incident.CfdIncidentTypeGroup</td>
 
 
-                </tr>
+            </tr>
 
             }
         </table>
 
     }
+    </div>
 </div>
