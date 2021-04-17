@@ -32,7 +32,7 @@ The application also provides an information on the nearby hydrants for the spec
 
 ### Datasources
 [Cincinnati Fire Incidents](https://data.cincinnati-oh.gov/Efficient-Service-Delivery/City-of-Cincinnati-Employees-w-Salaries/wmj4-ygbf/data)  
-[Google Places](https://developers.google.com/maps/documentation/places/web-service/overview)
+[Hydrants](https://data.cincinnati-oh.gov/resource/qhw6-ujsg.json)
 
 ### Team Members and Roles
 Shreeya Idagunji (Developer)  
